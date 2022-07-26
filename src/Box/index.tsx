@@ -12,8 +12,7 @@ const Wrapper = styled.div<{architectMode: boolean, color: string}>`
             display: block;
             position: absolute;
             top: 0; right: 0; bottom: 0; left: 0;
-            border: 1px solid ${props.color};
-            border-radius: 2px;
+            outline: 1px solid ${props.color};
             opacity: .5;
         }
 
@@ -23,7 +22,7 @@ const Wrapper = styled.div<{architectMode: boolean, color: string}>`
                 display: block;
                 position: absolute;
                 top: 0; right: 0; bottom: 0; left: 0;
-                border: 2px solid ${props.color};
+                outline: 2px solid ${props.color};
                 opacity: 1;
             }
         }

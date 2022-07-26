@@ -60,7 +60,7 @@ interface ColProps {
 const Col: React.FC<ColProps> = ({ children, span = [12, 12, 12, 12, 12], offset = [0, 0, 0, 0, 0], gutter = 'none', animate = false, className, style, column = 12 }) => {
     const context = useMonolight();
 
-    console.log(`span: ${span},\noffset: ${offset},\ngutter: ${gutter},\nanimate: ${animate},\ncolumn: ${column}`);
+    //console.log(`span: ${span},\noffset: ${offset},\ngutter: ${gutter},\nanimate: ${animate},\ncolumn: ${column}`);
 
     return <Wrapper
         breakpoints={context.breakpoints}

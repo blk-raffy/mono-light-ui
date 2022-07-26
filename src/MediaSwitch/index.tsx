@@ -37,7 +37,7 @@ const MediaSwitch: React.FC<MediaSwitchProps> = ({ childrens, breakpoints }) => 
             color: context?.architectMode?.color || '#5c95ff'
             }} style={{}} className={''}>
             {childrens.map((item: React.ReactNode, index: number) => {
-                return <Wrapper breakpoints={breakpoints} currentIndex={index}>
+                return <Wrapper key={index} breakpoints={breakpoints} currentIndex={index}>
                     {childrens[index]}
                 </Wrapper>
             })}

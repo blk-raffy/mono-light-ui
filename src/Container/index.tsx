@@ -15,6 +15,7 @@ const Wrapper = styled.div<{breakpoints: any, fluid: boolean, padding: number}>`
                     if (index === Object.keys(props.breakpoints).length - 1){
                         return `@media(min-width: ${props.breakpoints[key]}px) {
                             width: ${(props.breakpoints[key] < 501 ? '100%' : `${props.breakpoints[key] - 200}px`)} !important;
+                            min-width: 90%;
                             margin: 0 auto;
                             padding: ${props.padding}px;
                         }`
@@ -23,6 +24,7 @@ const Wrapper = styled.div<{breakpoints: any, fluid: boolean, padding: number}>`
                         (max-width: ${props.breakpoints[Object.keys(props.breakpoints)[index+1]] | 9999}px) {
                             width: ${(props.breakpoints[key] < 501 ? '100%' : `${props.breakpoints[key] - 200}px`)} !important;
                             margin: 0 auto;
+                            min-width: 90%;
                             padding: ${props.padding}px;
                         }`
                     }

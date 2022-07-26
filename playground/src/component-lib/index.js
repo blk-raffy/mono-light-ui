@@ -50,7 +50,7 @@ function __makeTemplateObject(cooked, raw) {
     return cooked;
 }
 
-var Wrapper$4 = styled.div(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n    position: relative;\n    width: auto;\n\n    ", "\n"], ["\n    position: relative;\n    width: auto;\n\n    ", "\n"])), function (props) { return props.architectMode && "\n        &:before {\n            content: '';\n            display: block;\n            position: absolute;\n            top: 0; right: 0; bottom: 0; left: 0;\n            border: 1px solid ".concat(props.color, ";\n            border-radius: 2px;\n            opacity: .5;\n        }\n\n        &:hover {\n            &:before {\n                content: '';\n                display: block;\n                position: absolute;\n                top: 0; right: 0; bottom: 0; left: 0;\n                border: 2px solid ").concat(props.color, ";\n                opacity: 1;\n            }\n        }\n        \n    "); });
+var Wrapper$4 = styled.div(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n    position: relative;\n    width: auto;\n\n    ", "\n"], ["\n    position: relative;\n    width: auto;\n\n    ", "\n"])), function (props) { return props.architectMode && "\n        &:before {\n            content: '';\n            display: block;\n            position: absolute;\n            top: 0; right: 0; bottom: 0; left: 0;\n            outline: 1px solid ".concat(props.color, ";\n            opacity: .5;\n        }\n\n        &:hover {\n            &:before {\n                content: '';\n                display: block;\n                position: absolute;\n                top: 0; right: 0; bottom: 0; left: 0;\n                outline: 2px solid ").concat(props.color, ";\n                opacity: 1;\n            }\n        }\n        \n    "); });
 var Box = function (_a) {
     var _b, _c;
     var children = _a.children, style = _a.style, className = _a.className;
@@ -66,10 +66,10 @@ var Wrapper$3 = styled.div(templateObject_1$3 || (templateObject_1$3 = __makeTem
     else {
         return Object.keys(props.breakpoints).map(function (key, index) {
             if (index === Object.keys(props.breakpoints).length - 1) {
-                return "@media(min-width: ".concat(props.breakpoints[key], "px) {\n                            width: ").concat((props.breakpoints[key] < 501 ? '100%' : "".concat(props.breakpoints[key] - 200, "px")), " !important;\n                            margin: 0 auto;\n                            padding: ").concat(props.padding, "px;\n                        }");
+                return "@media(min-width: ".concat(props.breakpoints[key], "px) {\n                            width: ").concat((props.breakpoints[key] < 501 ? '100%' : "".concat(props.breakpoints[key] - 200, "px")), " !important;\n                            min-width: 90%;\n                            margin: 0 auto;\n                            padding: ").concat(props.padding, "px;\n                        }");
             }
             else {
-                return "@media(min-width: ".concat(props.breakpoints[key], "px) and\n                        (max-width: ").concat(props.breakpoints[Object.keys(props.breakpoints)[index + 1]] | 9999, "px) {\n                            width: ").concat((props.breakpoints[key] < 501 ? '100%' : "".concat(props.breakpoints[key] - 200, "px")), " !important;\n                            margin: 0 auto;\n                            padding: ").concat(props.padding, "px;\n                        }");
+                return "@media(min-width: ".concat(props.breakpoints[key], "px) and\n                        (max-width: ").concat(props.breakpoints[Object.keys(props.breakpoints)[index + 1]] | 9999, "px) {\n                            width: ").concat((props.breakpoints[key] < 501 ? '100%' : "".concat(props.breakpoints[key] - 200, "px")), " !important;\n                            margin: 0 auto;\n                            min-width: 90%;\n                            padding: ").concat(props.padding, "px;\n                        }");
             }
         });
     }
@@ -106,7 +106,7 @@ var Col = function (_a) {
     var _b, _c;
     var children = _a.children, _d = _a.span, span = _d === void 0 ? [12, 12, 12, 12, 12] : _d, _e = _a.offset, offset = _e === void 0 ? [0, 0, 0, 0, 0] : _e, _f = _a.gutter, gutter = _f === void 0 ? 'none' : _f, _g = _a.animate, animate = _g === void 0 ? false : _g, className = _a.className, style = _a.style, _h = _a.column, column = _h === void 0 ? 12 : _h;
     var context = useMonolight();
-    console.log("span: ".concat(span, ",\noffset: ").concat(offset, ",\ngutter: ").concat(gutter, ",\nanimate: ").concat(animate, ",\ncolumn: ").concat(column));
+    //console.log(`span: ${span},\noffset: ${offset},\ngutter: ${gutter},\nanimate: ${animate},\ncolumn: ${column}`);
     return React.createElement(Wrapper$2, { breakpoints: context.breakpoints, span: span, offset: offset, gutter: gutter, animate: animate, column: column || (context === null || context === void 0 ? void 0 : context.column), style: style, className: className },
         React.createElement(Box, { architectMode: {
                 show: (_b = context === null || context === void 0 ? void 0 : context.architectMode) === null || _b === void 0 ? void 0 : _b.show,
@@ -141,7 +141,7 @@ var MediaSwitch = function (_a) {
                 show: (_b = context === null || context === void 0 ? void 0 : context.architectMode) === null || _b === void 0 ? void 0 : _b.show,
                 color: ((_c = context === null || context === void 0 ? void 0 : context.architectMode) === null || _c === void 0 ? void 0 : _c.color) || '#5c95ff'
             }, style: {}, className: '' }, childrens.map(function (item, index) {
-            return React.createElement(Wrapper, { breakpoints: breakpoints, currentIndex: index }, childrens[index]);
+            return React.createElement(Wrapper, { key: index, breakpoints: breakpoints, currentIndex: index }, childrens[index]);
         }));
     }
 };
