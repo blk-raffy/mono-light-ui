@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import React from 'react';
-import { useMonolight } from '../MonolightProvider/index'; 
+import { useMonolight } from '../MonolightProvider/index';
 
-const Wrapper = styled.div<{architectMode: boolean, color: string}>`
-    position: relative;
-    width: auto;
+const Wrapper = styled.div<{ architectMode: boolean; color: string }>`
+  position: relative;
+  width: auto;
 
-    ${props => props.architectMode && `
+  ${(props) =>
+    props.architectMode &&
+    `
         &:before {
             content: '';
             display: block;
@@ -30,25 +32,29 @@ const Wrapper = styled.div<{architectMode: boolean, color: string}>`
     `}
 `;
 
-interface ContainerProps {
-    children: React.ReactNode;
-    architectMode: {
-        show: boolean,
-        color: string
-    };
-    style: Object;
-    className: string;
+interface BoxProps {
+  children: React.ReactNode;
+  architectMode: {
+    show: boolean;
+    color: string;
+  };
+  style: Object;
+  className: string;
 }
 
-const Box: React.FC<ContainerProps> = ({ children, style, className }) => {
+const Box: React.FC<BoxProps> = ({ children, style, className }) => {
+  const box = useMonolight();
 
-    const box = useMonolight();
+  return (
+    <Wrapper
+      architectMode={box?.architectMode?.show!}
+      color={box?.architectMode?.color!}
+      className={className}
+      style={style}
+    >
+      {children}
+    </Wrapper>
+  );
+};
 
-    return (
-        <Wrapper architectMode={box?.architectMode?.show!} color={box?.architectMode?.color!} className={className} style={style}>
-            {children}
-        </Wrapper>
-    );
-}
-
-export { Box, ContainerProps };
+export { Box, BoxProps };

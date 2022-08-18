@@ -7,7 +7,11 @@ var Monolight = createContext({
     column: 12,
     architectMode: {
         show: false,
-        color: '#5c95ff'
+        color: '#5c95ff',
+    },
+    margins: {
+        vertical: 0,
+        horizontal: 200,
     },
     breakpoints: {
         min: 0,
@@ -16,8 +20,8 @@ var Monolight = createContext({
         md: 1000,
         lg: 1200,
         xl: 1500,
-        max: 9999
-    }
+        max: 9999,
+    },
 });
 var useMonolight = function () { return useContext(Monolight); };
 /**
@@ -50,101 +54,168 @@ function __makeTemplateObject(cooked, raw) {
     return cooked;
 }
 
-var Wrapper$4 = styled.div(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n    position: relative;\n    width: auto;\n\n    ", "\n"], ["\n    position: relative;\n    width: auto;\n\n    ", "\n"])), function (props) { return props.architectMode && "\n        &:before {\n            content: '';\n            display: block;\n            position: absolute;\n            top: 0; right: 0; bottom: 0; left: 0;\n            outline: 1px solid ".concat(props.color, ";\n            opacity: .5;\n        }\n\n        &:hover {\n            &:before {\n                content: '';\n                display: block;\n                position: absolute;\n                top: 0; right: 0; bottom: 0; left: 0;\n                outline: 2px solid ").concat(props.color, ";\n                opacity: 1;\n            }\n        }\n        \n    "); });
+var Wrapper$7 = styled.div(templateObject_1$7 || (templateObject_1$7 = __makeTemplateObject(["\n  position: relative;\n  width: auto;\n\n  ", "\n"], ["\n  position: relative;\n  width: auto;\n\n  ", "\n"])), function (props) {
+    return props.architectMode &&
+        "\n        &:before {\n            content: '';\n            display: block;\n            position: absolute;\n            top: 0; right: 0; bottom: 0; left: 0;\n            outline: 1px solid ".concat(props.color, ";\n            opacity: .5;\n        }\n\n        &:hover {\n            &:before {\n                content: '';\n                display: block;\n                position: absolute;\n                top: 0; right: 0; bottom: 0; left: 0;\n                outline: 2px solid ").concat(props.color, ";\n                opacity: 1;\n            }\n        }\n        \n    ");
+});
 var Box = function (_a) {
     var _b, _c;
     var children = _a.children, style = _a.style, className = _a.className;
     var box = useMonolight();
-    return (React.createElement(Wrapper$4, { architectMode: (_b = box === null || box === void 0 ? void 0 : box.architectMode) === null || _b === void 0 ? void 0 : _b.show, color: (_c = box === null || box === void 0 ? void 0 : box.architectMode) === null || _c === void 0 ? void 0 : _c.color, className: className, style: style }, children));
+    return (React.createElement(Wrapper$7, { architectMode: (_b = box === null || box === void 0 ? void 0 : box.architectMode) === null || _b === void 0 ? void 0 : _b.show, color: (_c = box === null || box === void 0 ? void 0 : box.architectMode) === null || _c === void 0 ? void 0 : _c.color, className: className, style: style }, children));
 };
-var templateObject_1$4;
+var templateObject_1$7;
 
-var Wrapper$3 = styled.div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n    height: 100%;\n    ", "\n"], ["\n    height: 100%;\n    ", "\n"])), function (props) {
+var Wrapper$6 = styled.div(templateObject_1$6 || (templateObject_1$6 = __makeTemplateObject(["\n  height: 100%;\n  ", "\n"], ["\n  height: 100%;\n  ", "\n"])), function (props) {
     if (props.fluid) {
         return "width: 100% !important;";
     }
     else {
         return Object.keys(props.breakpoints).map(function (key, index) {
             if (index === Object.keys(props.breakpoints).length - 1) {
-                return "@media(min-width: ".concat(props.breakpoints[key], "px) {\n                            width: ").concat((props.breakpoints[key] < 501 ? '100%' : "".concat(props.breakpoints[key] - 200, "px")), " !important;\n                            min-width: 90%;\n                            margin: 0 auto;\n                            padding: ").concat(props.padding, "px;\n                        }");
+                return "@media(min-width: ".concat(props.breakpoints[key], "px) {\n                            width: ").concat(props.breakpoints[key] < 501
+                    ? '100%'
+                    : "".concat(props.breakpoints[key] -
+                        props.margins.horizontal, "px"), " !important;\n                            min-width: 90%;\n                            margin: 0 auto;\n                            padding: ").concat(props.padding, "px;\n                        }");
             }
             else {
-                return "@media(min-width: ".concat(props.breakpoints[key], "px) and\n                        (max-width: ").concat(props.breakpoints[Object.keys(props.breakpoints)[index + 1]] | 9999, "px) {\n                            width: ").concat((props.breakpoints[key] < 501 ? '100%' : "".concat(props.breakpoints[key] - 200, "px")), " !important;\n                            margin: 0 auto;\n                            min-width: 90%;\n                            padding: ").concat(props.padding, "px;\n                        }");
+                return "@media(min-width: ".concat(props.breakpoints[key], "px) and\n                        (max-width: ").concat(props.breakpoints[Object.keys(props.breakpoints)[index + 1]] | 9999, "px) {\n                            width: ").concat(props.breakpoints[key] < 501
+                    ? '100%'
+                    : "".concat(props.breakpoints[key] -
+                        props.margins.horizontal, "px"), " !important;\n                            margin: 0 auto;\n                            min-width: 90%;\n                            padding: ").concat(props.padding, "px;\n                        }");
             }
         });
     }
 });
 var Container = function (_a) {
-    var _b, _c;
+    var _b, _c, _d, _e, _f, _g;
     var children = _a.children, padding = _a.padding, fluid = _a.fluid, style = _a.style, className = _a.className;
     var context = useMonolight();
-    return React.createElement(Wrapper$3, { breakpoints: context.breakpoints, padding: padding, fluid: fluid, style: style, className: className },
+    console.log(context.margins);
+    return (React.createElement(Wrapper$6, { breakpoints: context.breakpoints, fluid: fluid, padding: padding, style: style, margins: {
+            vertical: (_c = (_b = context === null || context === void 0 ? void 0 : context.margins) === null || _b === void 0 ? void 0 : _b.vertical) !== null && _c !== void 0 ? _c : 0,
+            horizontal: (_e = (_d = context === null || context === void 0 ? void 0 : context.margins) === null || _d === void 0 ? void 0 : _d.horizontal) !== null && _e !== void 0 ? _e : 200,
+        }, className: className },
         React.createElement(Box, { architectMode: {
-                show: (_b = context === null || context === void 0 ? void 0 : context.architectMode) === null || _b === void 0 ? void 0 : _b.show,
-                color: ((_c = context === null || context === void 0 ? void 0 : context.architectMode) === null || _c === void 0 ? void 0 : _c.color) || '#5c95ff'
-            }, style: {}, className: '' }, children));
+                show: (_f = context === null || context === void 0 ? void 0 : context.architectMode) === null || _f === void 0 ? void 0 : _f.show,
+                color: ((_g = context === null || context === void 0 ? void 0 : context.architectMode) === null || _g === void 0 ? void 0 : _g.color) || '#5c95ff',
+            }, style: {}, className: '' }, children)));
 };
-var templateObject_1$3;
+var templateObject_1$6;
 
-var Wrapper$2 = styled.div(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n    flex: 1 1 0;\n    width: 100%;\n    ", "\n    ", "\n"], ["\n    flex: 1 1 0;\n    width: 100%;\n    ", "\n    ", "\n"])), function (props) { return props.animate && "\n        transition: all 0.3s ease;\n        transition-property: width;\n    "; }, function (props) { return Object.keys(props.breakpoints).map(function (key, index) {
-    if (index === Object.keys(props.breakpoints).length - 1) {
-        return "@media(min-width: ".concat(props.breakpoints[key], "px) {\n                    width: ").concat(props.span[index] !== 'auto'
-            ? "".concat(((props.span[index] || props.span[0] || props.column) / props.column) * 100, "%")
-            : null, ";\n                    margin-left: ").concat(props.offset[index] !== 'auto'
-            ? "".concat(((props.offset[index] || props.offset[0] || 0) / props.column) * 100, "%")
-            : null, ";\n                    flex: ").concat((props.span[index] !== 'auto' ? 'none !important' : null), ";\n                    padding: ").concat(props.gutter != 'none' ? "".concat(props.gutter) : "0", "px;\n                }");
-    }
-    else {
-        return "@media(min-width: ".concat(props.breakpoints[key], "px) and\n                    (max-width: ").concat(props.breakpoints[Object.keys(props.breakpoints)[index + 1]] || 0, "px) {\n                        width: ").concat(props.span[index] !== 'auto'
-            ? "".concat(((props.span[index] || props.span[0] || props.column) / props.column) * 100, "%")
-            : null, ";\n                        margin-left: ").concat(props.offset[index] !== 'auto'
-            ? "".concat(((props.offset[index] || props.offset[0] || 0) / props.column) * 100, "%")
-            : null, ";\n                        flex: ").concat((props.span[index] !== 'auto' ? 'none !important' : null), ";\n                        padding: ").concat(props.gutter != 'none' ? "".concat(props.gutter) : "0", "px;\n                    }");
-    }
-}); });
+var Wrapper$5 = styled.div(templateObject_1$5 || (templateObject_1$5 = __makeTemplateObject(["\n  flex: 1 1 0;\n  width: 100%;\n  ", "\n  ", "\n"], ["\n  flex: 1 1 0;\n  width: 100%;\n  ", "\n  ", "\n"])), function (props) {
+    return props.animate &&
+        "\n        transition: all 0.3s ease;\n        transition-property: width;\n    ";
+}, function (props) {
+    return Object.keys(props.breakpoints).map(function (key, index) {
+        if (index === Object.keys(props.breakpoints).length - 1) {
+            return "@media(min-width: ".concat(props.breakpoints[key], "px) {\n                    width: ").concat(props.span[index] !== 'auto'
+                ? "".concat(((props.span[index] ||
+                    props.span[0] ||
+                    props.column) /
+                    props.column) *
+                    100, "%")
+                : null, ";\n                    margin-left: ").concat(props.offset[index] !== 'auto'
+                ? "".concat(((props.offset[index] || props.offset[0] || 0) /
+                    props.column) *
+                    100, "%")
+                : null, ";\n                    flex: ").concat(props.span[index] !== 'auto' ? 'none !important' : null, ";\n                    padding: ").concat(props.gutter != 'none' ? "".concat(props.gutter) : '0', "px;\n                }");
+        }
+        else {
+            return "@media(min-width: ".concat(props.breakpoints[key], "px) and\n                    (max-width: ").concat(props.breakpoints[Object.keys(props.breakpoints)[index + 1]] || 0, "px) {\n                        width: ").concat(props.span[index] !== 'auto'
+                ? "".concat(((props.span[index] ||
+                    props.span[0] ||
+                    props.column) /
+                    props.column) *
+                    100, "%")
+                : null, ";\n                        margin-left: ").concat(props.offset[index] !== 'auto'
+                ? "".concat(((props.offset[index] || props.offset[0] || 0) /
+                    props.column) *
+                    100, "%")
+                : null, ";\n                        flex: ").concat(props.span[index] !== 'auto'
+                ? 'none !important'
+                : null, ";\n                        padding: ").concat(props.gutter != 'none' ? "".concat(props.gutter) : '0', "px;\n                    }");
+        }
+    });
+});
 var Col = function (_a) {
     var _b, _c;
     var children = _a.children, _d = _a.span, span = _d === void 0 ? [12, 12, 12, 12, 12] : _d, _e = _a.offset, offset = _e === void 0 ? [0, 0, 0, 0, 0] : _e, _f = _a.gutter, gutter = _f === void 0 ? 'none' : _f, _g = _a.animate, animate = _g === void 0 ? false : _g, className = _a.className, style = _a.style, _h = _a.column, column = _h === void 0 ? 12 : _h;
     var context = useMonolight();
     //console.log(`span: ${span},\noffset: ${offset},\ngutter: ${gutter},\nanimate: ${animate},\ncolumn: ${column}`);
-    return React.createElement(Wrapper$2, { breakpoints: context.breakpoints, span: span, offset: offset, gutter: gutter, animate: animate, column: column || (context === null || context === void 0 ? void 0 : context.column), style: style, className: className },
+    return (React.createElement(Wrapper$5, { breakpoints: context.breakpoints, span: span, offset: offset, gutter: gutter, animate: animate, column: column || (context === null || context === void 0 ? void 0 : context.column), style: style, className: className },
         React.createElement(Box, { architectMode: {
                 show: (_b = context === null || context === void 0 ? void 0 : context.architectMode) === null || _b === void 0 ? void 0 : _b.show,
-                color: ((_c = context === null || context === void 0 ? void 0 : context.architectMode) === null || _c === void 0 ? void 0 : _c.color) || '#5c95ff'
-            }, style: {}, className: '' }, children));
+                color: ((_c = context === null || context === void 0 ? void 0 : context.architectMode) === null || _c === void 0 ? void 0 : _c.color) || '#5c95ff',
+            }, style: {}, className: '' }, children)));
 };
-var templateObject_1$2;
+var templateObject_1$5;
 
-var Wrapper$1 = styled.div(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n    ", "\n"], ["\n    ", "\n"])), function (props) { return Object.keys(props.breakpoints).map(function (key, index) {
-    return "@media (min-width: ".concat(props.breakpoints[key], "px) {\n            display: flex;\n            justify-content: flex-start;\n            flex-wrap: wrap;\n            margin: 0;\n            width: 100%;\n        }");
-}); });
+var Wrapper$4 = styled.div(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n  ", "\n"], ["\n  ", "\n"])), function (props) {
+    return Object.keys(props.breakpoints).map(function (key, index) {
+        return "@media (min-width: ".concat(props.breakpoints[key], "px) {\n            display: flex;\n            justify-content: flex-start;\n            flex-wrap: wrap;\n            margin: 0;\n            width: 100%;\n        }");
+    });
+});
 var Row = function (_a) {
     var children = _a.children, _b = _a.gutter, gutter = _b === void 0 ? 'none' : _b, _c = _a.animate, animate = _c === void 0 ? false : _c, className = _a.className, style = _a.style, columns = _a.columns;
     var context = useMonolight();
-    return React.createElement(Wrapper$1, { breakpoints: context.breakpoints }, React.Children.toArray(children).map(function (item, index) {
+    return (React.createElement(Wrapper$4, { breakpoints: context.breakpoints }, React.Children.toArray(children).map(function (item, index) {
         //console.log(item.props.span);
         return (item && (React.createElement(Col, { span: item.props.span, offset: item.props.offset, key: index, gutter: gutter, column: columns || (context === null || context === void 0 ? void 0 : context.column), animate: animate, style: style, className: className }, item.props.children)));
-    }));
+    })));
 };
-var templateObject_1$1;
+var templateObject_1$4;
 
-var Wrapper = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: none;\n    ", "\n"], ["\n    display: none;\n    ", "\n"])), function (props) { return props.currentIndex > 0 ? "\n        @media screen and (min-width: ".concat(props.breakpoints[props.currentIndex - 1], "px) and\n            (max-width: ").concat(props.breakpoints[props.currentIndex] || 0, "px) {\n                display: block;\n            }\n    ") : "\n            @media screen and (max-width: ".concat(props.breakpoints[props.currentIndex], "px) {\n                display: block;\n            }\n    "); });
+var Wrapper$3 = styled.div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  display: none;\n  ", "\n"], ["\n  display: none;\n  ", "\n"])), function (props) {
+    return props.currentIndex > 0
+        ? "\n        @media screen and (min-width: ".concat(props.breakpoints[props.currentIndex - 1], "px) and\n            (max-width: ").concat(props.breakpoints[props.currentIndex] || 0, "px) {\n                display: block;\n            }\n    ")
+        : "\n            @media screen and (max-width: ".concat(props.breakpoints[props.currentIndex], "px) {\n                display: block;\n            }\n    ");
+});
 var MediaSwitch = function (_a) {
     var _b, _c;
     var childrens = _a.childrens, breakpoints = _a.breakpoints;
     var context = useMonolight();
-    if ((childrens == null || breakpoints == null) || childrens.length != breakpoints.length) {
+    if (childrens == null ||
+        breakpoints == null ||
+        childrens.length != breakpoints.length) {
         return React.createElement(React.Fragment, null);
     }
     else {
-        return React.createElement(Box, { architectMode: {
+        return (React.createElement(Box, { architectMode: {
                 show: (_b = context === null || context === void 0 ? void 0 : context.architectMode) === null || _b === void 0 ? void 0 : _b.show,
-                color: ((_c = context === null || context === void 0 ? void 0 : context.architectMode) === null || _c === void 0 ? void 0 : _c.color) || '#5c95ff'
+                color: ((_c = context === null || context === void 0 ? void 0 : context.architectMode) === null || _c === void 0 ? void 0 : _c.color) || '#5c95ff',
             }, style: {}, className: '' }, childrens.map(function (item, index) {
-            return React.createElement(Wrapper, { key: index, breakpoints: breakpoints, currentIndex: index }, childrens[index]);
-        }));
+            return (React.createElement(Wrapper$3, { key: index, breakpoints: breakpoints, currentIndex: index }, childrens[index]));
+        })));
     }
+};
+var templateObject_1$3;
+
+var Wrapper$2 = styled.button(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n  cursor: pointer;\n  ", "\n"], ["\n  cursor: pointer;\n  ", "\n"])), function (props) { return props.uppercase && 'text-transform: uppercase;'; });
+var Button = function (_a) {
+    var _b = _a.children, children = _b === void 0 ? 'Button' : _b, size = _a.size, _c = _a.type, type = _c === void 0 ? 'button' : _c, _d = _a.disabled, disabled = _d === void 0 ? false : _d, _e = _a.uppercase, uppercase = _e === void 0 ? false : _e, className = _a.className, style = _a.style;
+    useMonolight();
+    return (React.createElement(Wrapper$2, { type: type, size: size, disabled: disabled, uppercase: uppercase, style: style, className: className }, children));
+};
+var templateObject_1$2;
+
+var Wrapper$1 = styled.div(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject([""], [""])));
+var InputWrapper = styled.input(templateObject_2 || (templateObject_2 = __makeTemplateObject([""], [""])));
+var Label = styled.p(templateObject_3 || (templateObject_3 = __makeTemplateObject([""], [""])));
+var Input = function (_a) {
+    var children = _a.children, placeholder = _a.placeholder, label = _a.label, type = _a.type; _a.regexes; var defaultValue = _a.defaultValue, required = _a.required, fixed = _a.fixed; _a.minChar; _a.maxChar; var style = _a.style, className = _a.className, labelStyle = _a.labelStyle, labelClassName = _a.labelClassName, _b = _a.onChange, onChange = _b === void 0 ? function () { } : _b;
+    return (React.createElement(Wrapper$1, null,
+        (label !== undefined || children !== undefined) && (React.createElement(Label, { style: labelStyle, className: labelClassName }, label !== null && label !== void 0 ? label : (children || ''))),
+        React.createElement(InputWrapper, { onChange: function (evt) { return !fixed && onChange(evt.target.value); }, type: type, required: required, defaultValue: defaultValue, placeholder: placeholder, style: style, className: className })));
+};
+var templateObject_1$1, templateObject_2, templateObject_3;
+
+var Wrapper = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  background-color: transparent;\n"], ["\n  background-color: transparent;\n"])));
+var Select = function (_a) {
+    var children = _a.children;
+    useMonolight();
+    return React.createElement(Wrapper, null, children);
 };
 var templateObject_1;
 
-export { Box, Col, Container, MediaSwitch, Monolight, Row, useMonolight };
+export { Box, Button, Col, Container, Input, MediaSwitch, Monolight, Row, Select, useMonolight };

@@ -1,5 +1,5 @@
 import React from 'react';
-interface ContainerProps {
+interface BoxProps {
     children: React.ReactNode;
     architectMode: {
         show: boolean;
@@ -8,5 +8,5 @@ interface ContainerProps {
     style: Object;
     className: string;
 }
-declare const Box: React.FC<ContainerProps>;
-export { Box, ContainerProps };
+declare const Box: React.FC<BoxProps>;
+export { Box, BoxProps };

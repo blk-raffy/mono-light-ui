@@ -6,6 +6,10 @@ export declare type Context = {
         show: boolean;
         color: string;
     };
+    margins?: {
+        vertical: number;
+        horizontal: number;
+    };
     breakpoints?: {
         min?: number;
         xs?: number;
@@ -26,4 +30,4 @@ export declare const useMonolight: () => Context;
  *     {children}
  * </Monolight.Provider>
  *
- */ 
+ */
