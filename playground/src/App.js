@@ -1,14 +1,18 @@
 import './App.css';
 
-import { Container, Col, Row, Monolight, MediaSwitch } from './component-lib'
+import { Container, Col, Row, Monolight, MediaSwitch, Button, Input } from './component-lib'
 
 function App() {
   return (
     <Monolight.Provider value={{
       column: 12,
       architectMode: {
-        show: true,
+        show: false,
         color: '#5c95ff'
+      },
+      margins: {
+        vertical: 0,
+        horizontal: 400,
       },
       breakpoints: {
           xs: 500,
@@ -29,13 +33,15 @@ function App() {
             </Col>
           </Row>
           <MediaSwitch childrens={[
-                          <div>This will be shown on Mobile</div>,
-                          <div>This will be shown on Ipad</div>,
-                          <div>This will be shown on Desktop</div>
-                        ]}
-                        breakpoints={[
-                          500, 800, 9999
-                        ]}/>
+              <div>This will be shown on Mobile</div>,
+              <div>This will be shown on Ipad</div>,
+              <div>This will be shown on Desktop</div>
+            ]}
+            breakpoints={[
+              500, 800, 9999
+            ]}/>
+          <Button style={{ backgroundColor: "red" }}>Babbano</Button>
+          <Input placeholder={"input"}/>
         </Container>
       </Container>
     </Monolight.Provider>
